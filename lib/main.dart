@@ -1,5 +1,5 @@
+import 'package:bins/ScreenMap.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,19 +26,18 @@ class ViewMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('NSS@LBS'),
+      ),
       body: Center(
-        child: InteractiveViewer(
-          clipBehavior: Clip.none,
-          minScale: 1,
-          maxScale: 10,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: SvgPicture.asset(
-                  'assets/map.svg',
-                )),
-          ),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => ScreenMap()),
+  );
+          },
+          child: Text('Click to view map'),
         ),
       ),
     );
